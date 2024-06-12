@@ -1,0 +1,25 @@
+{
+    "lr": 0.001,
+    "type": "classic",
+    "num_epochs": 5, 
+    "batch":64,
+    "context": 512, 
+    "forecast_len": 96, 
+    "fraction": 0.1,
+    "datasets":{
+        "covid": "https://raw.githubusercontent.com/datasets/covid-19/master/data/time-series-19-covid-combined.csv"
+    },
+    "lora_params": {
+        "r":256,
+        "lora_alpha":256, 
+        "target_modules": ["attn_layer", "fc1", "fc2", "base_forecast_block"],
+        "lora_dropout":0.1,
+        "bias": "none"
+    },
+    "freeze":[
+        "backbone"
+    ],
+    "save_path": "../datasets/covid/classic/preds.json",
+    "save_actual": "../datasets/covid/classic/true.json"
+}
+
